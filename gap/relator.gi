@@ -27,15 +27,15 @@ function(pres, word, id)
     return rel;
 end);
 
-InstallMethod(Base, "for a pregroup relator",
+InstallMethod(Base, "for a pregroup word",
               [IsPregroupRelator and IsPregroupRelatorRep ],
               r -> r!.base);
 
-InstallMethod(Exponent, "for a pregroup relator",
+InstallMethod(Exponent, "for a pregroup word",
               [IsPregroupRelator and IsPregroupRelatorRep ],
               r -> r!.exponent);
 
-InstallMethod(Inverse, "for a pregroup relator",
+InstallMethod(Inverse, "for a pregroup word",
               [ IsPregroupRelator and IsPregroupRelatorRep ],
               r -> Objectify(IsPregroupRelatorType,
                              rec( pres := r!.pres
@@ -45,17 +45,17 @@ InstallMethod(Inverse, "for a pregroup relator",
                                 , __ID := -r!.__ID)
                             ));
 InstallMethod(PregroupPresentationOf,
-              "for pregroup relators",
+              "for pregroup words",
               [IsPregroupRelator],
               r -> r!.pres);
 
-InstallMethod(Locations, "for a pregroup relator",
+InstallMethod(Locations, "for a pregroup word",
               [IsPregroupRelator],
 function(r)
     return List([1..r!.baselen], i -> NewLocation(r, i));
 end);
 
-InstallMethod(\[\], "for a pregroup relator",
+InstallMethod(\[\], "for a pregroup word",
               [IsPregroupRelator and IsPregroupRelatorRep, IsInt],
 function(r, p)
     local i, l;
@@ -66,7 +66,7 @@ function(r, p)
     return r!.base[i + 1];
 end);
 
-InstallMethod(Length, "for a pregroup relator",
+InstallMethod(Length, "for a pregroup word",
     [ IsPregroupRelator and IsPregroupRelatorRep ],
 function(r)
     return r!.baselen * r!.exponent;
@@ -74,7 +74,7 @@ end);
 
 # we could possibly store this on creation
 # But this is run at most once anyway
-InstallMethod(Places, "for a pregroup relator",
+InstallMethod(Places, "for a pregroup word",
               [ IsPregroupRelator and IsPregroupRelatorRep ],
 function(r)
     local P, res;
@@ -89,25 +89,25 @@ function(r)
     return res;
 end);
 
-InstallMethod(ViewString, "for a pregroup relator",
+InstallMethod(ViewString, "for a pregroup word",
     [IsPregroupRelator],
 function(r)
     if Exponent(r) > 1 then
-        return STRINGIFY("<pregroup relator ("
+        return STRINGIFY("<pregroup word ("
                         , List(r!.base, ViewString)
                         , ")^", r!.exponent, ">");
     else
-        return STRINGIFY("<pregroup relator "
+        return STRINGIFY("<pregroup word "
                         , List(r!.base, ViewString)
                         , ">");
     fi;
 end);
 
-InstallMethod(IsBound\[\], "for a pregroup relator, and an position",
+InstallMethod(IsBound\[\], "for a pregroup word, and an position",
               [IsPregroupRelator, IsInt], ReturnTrue );
 
 
-InstallMethod(\=, "for a pregroup relator, and a pregroup relator",
+InstallMethod(\=, "for a pregroup word, and a pregroup word",
               [IsPregroupRelator, IsPregroupRelator],
 function(l,r)
     # id is uniqe wrt pregroup presentation. We should probably
@@ -117,7 +117,7 @@ function(l,r)
            and (l!.base = r!.base);
 end);
 
-InstallMethod(\in, "for a generator and a pregroup relator",
+InstallMethod(\in, "for a generator and a pregroup word",
               [ IsElementOfPregroup, IsPregroupRelator and IsPregroupRelatorRep],
 function(e,r)
     return e in r!.base;
@@ -154,5 +154,3 @@ function(word)
 
     return rw2;
 end);
-
-
