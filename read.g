@@ -8,6 +8,7 @@ ReadPackage("walrus", "gap/util.gi");
 ReadPackage("walrus", "gap/pregroup.gi");
 ReadPackage("walrus", "gap/pregroupoffreegroup.gi");
 ReadPackage("walrus", "gap/pregroupconstr.gi");
+ReadPackage("walrus", "gap/universalgroup.gi");
 ReadPackage("walrus", "gap/relator.gi");
 ReadPackage("walrus", "gap/presentation.gi");
 ReadPackage("walrus", "gap/location.gi");

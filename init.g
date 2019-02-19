@@ -7,6 +7,7 @@ DeclareInfoClass( "InfoWalrus" );
 
 ReadPackage("walrus", "gap/util.gd");
 ReadPackage("walrus", "gap/pregroup.gd");
+ReadPackage("walrus", "gap/universalgroup.gd");
 ReadPackage("walrus", "gap/relator.gd");
 ReadPackage("walrus", "gap/presentation.gd");
 ReadPackage("walrus", "gap/location.gd");
